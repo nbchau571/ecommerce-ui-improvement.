@@ -88,7 +88,19 @@ h1,h2,h3,p{margin-top:0}h1{font-size:clamp(36px,4.2vw,59px);line-height:1.13;let
   padding-top: 13px;
   margin-top: 2px;
 }
-/* Nút mở rộng thông tin */ .product-details summary {   cursor: pointer;   display: flex;   justify-content: space-between;   align-items: center;   gap: 6px;   font-size: 13px;   font-weight: 700;   color: var(--accent);   list-style: none; } .product-details summary::-webkit-details-marker {   display: none; } 
+/* Căn chỉnh nội dung nút xem thông tin bằng Flexbox */
+.product-details summary {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  list-style: none;
+}
+.product-details summary::-webkit-details-marker {   display: none; } 
 /* Biểu tượng mở rộng */ .product-details summary span {   font-size: 20px;   line-height: 1;   transition: transform 0.2s ease; }
 /* Xoay biểu tượng khi mở thông tin */ .product-details[open] summary span {   transform: rotate(45deg); } 
 /* Đoạn mô tả sản phẩm */ .product-details p {   font-size: 12px;   color: var(--muted);   line-height: 1.6;   margin: 11px 0 0; } 
