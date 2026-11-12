@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài tập 5 - Best Shared Hosting</title>
+<style>
+*{
+    box-sizing:border-box;
+}
+body{
+    min-height:100vh;
+    margin:0;
+    padding:40px 20px;
+    font-family:Arial,sans-serif;
+    color:#352b29;
+    background:
+        linear-gradient(145deg,#fff8f1,#f3e7df);
+}
+.home-link{
+    max-width:900px;
+    margin:0 auto 25px;
+}
+.home-link a{
+    display:inline-block;
+    padding:10px 15px;
+    border-radius:999px;
+    background:#784b43;
+    color:#fff;
+    text-decoration:none;
+    transition:
+        transform .2s,
+        background .2s,
+        box-shadow .2s;
+}
+.home-link a:hover{
+    background:#b65c62;
+    transform:translateY(-2px);
+    box-shadow:0 6px 15px #784b4333;
+}
+.best-shared{
+    max-width:900px;
+    margin:0 auto;
+    padding:50px 35px;
+    text-align:center;
+    background:#fff;
+    border:1px solid #efd9cb;
+    border-radius:24px;
+    box-shadow:0 16px 40px #653c3020;
+    position:relative;
+    overflow:hidden;
+}
+.best-shared::before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    background:#f8d8cd;
+    border-radius:50%;
+    top:-100px;
+    left:-100px;
+    opacity:.5;
+}
+.best-shared::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:#ead0c5;
+    border-radius:50%;
+    bottom:-90px;
+    right:-70px;
+    opacity:.45;
+}
+.logo{
+    position:relative;
+    z-index:2;
+
+    margin:0 0 24px;
+}
+.logo img{
+    width:200px;
+
+    max-width:70%;
+
+    transition:
+        transform .3s,
+        filter .3s;
+}
+.logo img:hover{
+    transform:scale(1.06);
+
+    filter:
+        drop-shadow(0 8px 12px #784b4333);
+}
+.best-shared h2{
+    position:relative;
+    z-index:2;
+    margin:0 0 18px;
+    font-size:36px;
+    font-weight:normal;
+    color:#352b29;
+}
+.best-shared h2 strong{
+    color:#b65c62;
+}
+.lead-text{
+    position:relative;
+    z-index:2;
+    max-width:650px;
+    margin:0 auto 32px;
+    line-height:1.7;
+    color:#74615d;
+    font-size:16px;
+}
+.btn-list{
+    position:relative;
+    z-index:2;
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+.btn-list li{
+    display:inline-block;
+    margin:7px;
+}
+/* thẻ a */
+.btn-list a{
+    display:inline-block;
+    min-width:145px;
+    padding:13px 20px;
+    border-radius:10px;
+    background:
+        linear-gradient(
+            135deg,
+            #d98772,
+            #b65c62
+        );
+
+    color:#fff;
+    font-weight:bold;
+    text-decoration:none;
+    box-shadow:
+        0 5px 14px #9a514333;
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        background .2s;
+}
+/* tương tác hover */
+.btn-list a:hover{
+    transform:translateY(-4px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #bd7650,
+            #8e4d44
+        );
+
+    box-shadow:
+        0 10px 20px #784b4340;
+}
+.btn-list a:active{
+    transform:translateY(0);
+
+    box-shadow:
+        0 3px 8px #784b4330;
+}
+@media(max-width:600px){
+
+    body{
+        padding:24px 14px;
+    
+    .best-shared{
+        padding:38px 18px;
+    }
+    .best-shared h2{
+        font-size:28px;
+    }
+    .lead-text{
+        font-size:15px;
+    }
+    .btn-list li{
+        display:block;
+
+        margin:10px 0;
+    }
+    .btn-list a{
+        width:100%;
+    }
+}
+</style>
+</head>
+<body>
+<p class="home-link">
+    <a href="index.html">
+        ← Về trang chủ
+    </a>
+</p>
+<section class="best-shared">
+
+    <p class="logo">
+
+        <img src="img/bitlogo.png" alt="BIT UEH Logo">
+
+    </p>
+    <h2>
+        Best
+        <strong>Shared Hosting</strong>
+        Company
+    </h2>
+    <p class="lead-text">
+
+        With this responsive landing page template,
+        you can promote your all hosting,
+        domain and email services.
+
+    </p>
+    <ul class="btn-list">
+
+        <li>
+            <a href="./">
+                View Plans
+            </a>
+        </li>
+        <li>
+            <a href="./">
+                All Features
+            </a>
+        </li>
+    </ul>
+</section>
+</body>
+</html>

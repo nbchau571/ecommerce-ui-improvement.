@@ -1,0 +1,543 @@
+```html
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bài tập tuần 3</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+
+        body{
+            min-height:100vh;
+            margin:0;
+            padding:45px 20px;
+            font-family:Arial,sans-serif;
+            color:#352b29;
+            background:linear-gradient(145deg,#fff8f1,#f3e7df);
+            position:relative;
+            overflow-x:hidden;
+        }
+
+        body::before{
+            content:"";
+            position:fixed;
+            width:300px;
+            height:300px;
+            border-radius:50%;
+            background:#efb8aa;
+            top:-120px;
+            left:-100px;
+            opacity:.25;
+            filter:blur(8px);
+            z-index:-1;
+        }
+
+        body::after{
+            content:"";
+            position:fixed;
+            width:260px;
+            height:260px;
+            border-radius:50%;
+            background:#d7a69a;
+            bottom:-100px;
+            right:-80px;
+            opacity:.22;
+            filter:blur(10px);
+            z-index:-1;
+        }
+
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:38px;
+            background:rgba(255,255,255,.94);
+            border:1px solid #efd9cb;
+            border-radius:28px;
+            box-shadow:0 18px 45px #653c3025;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .container::before{
+            content:"";
+            position:absolute;
+            width:220px;
+            height:220px;
+            border-radius:50%;
+            background:#f9ded5;
+            top:-100px;
+            right:-80px;
+            opacity:.55;
+        }
+
+        .profile{
+            text-align:center;
+            position:relative;
+            z-index:2;
+            padding:25px 20px 35px;
+            border-radius:22px;
+            background:linear-gradient(135deg,#fff8f1,#fff);
+            border:1px solid #f0ddd4;
+            box-shadow:0 10px 25px #653c3014;
+        }
+
+        .week-badge{
+            display:inline-block;
+            margin-bottom:20px;
+            padding:8px 15px;
+            border-radius:999px;
+            background:linear-gradient(135deg,#d98772,#b65c62);
+            color:#fff;
+            font-size:13px;
+            font-weight:bold;
+            letter-spacing:1px;
+            box-shadow:0 5px 12px #9a514333;
+        }
+
+        .avatar-wrap{
+            width:165px;
+            height:165px;
+            margin:0 auto;
+            padding:7px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#d98772,#b65c62,#f0b49e);
+            box-shadow:0 10px 25px #784b4335;
+            transition:transform .3s,box-shadow .3s;
+        }
+
+        .avatar-wrap:hover{
+            transform:translateY(-5px) rotate(-2deg);
+            box-shadow:0 16px 30px #784b4345;
+        }
+
+        .avatar{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            border-radius:50%;
+            border:4px solid #fff;
+        }
+
+        h1{
+            margin:22px 0 8px;
+            color:#784b43;
+            font-size:35px;
+        }
+
+        .subtitle{
+            margin:0 0 18px;
+            color:#b65c62;
+            font-weight:bold;
+        }
+
+        .student-info{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:10px;
+            margin-top:20px;
+        }
+
+        .student-info span{
+            display:inline-block;
+            padding:9px 14px;
+            border-radius:999px;
+            background:#fff3ed;
+            border:1px solid #efd9cb;
+            color:#74615d;
+            font-size:14px;
+        }
+
+        .student-info i{
+            margin-right:6px;
+            color:#b65c62;
+        }
+
+        .section-title{
+            margin:42px 0 25px;
+            text-align:center;
+            color:#784b43;
+            font-size:27px;
+        }
+
+        .section-title::after{
+            content:"";
+            display:block;
+            width:70px;
+            height:4px;
+            margin:10px auto 0;
+            border-radius:999px;
+            background:linear-gradient(90deg,#d98772,#b65c62);
+        }
+
+        .exercise-list{
+            list-style:none;
+            padding:0;
+            margin:0;
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:16px;
+        }
+
+        .exercise-list a{
+            min-height:92px;
+            display:flex;
+            align-items:center;
+            gap:14px;
+            padding:18px;
+            border-radius:16px;
+            border:1px solid #efd9cb;
+            background:#fff8f1;
+            color:#784b43;
+            font-weight:bold;
+            text-decoration:none;
+            box-shadow:0 6px 14px #653c3012;
+            transition:
+                transform .2s,
+                box-shadow .2s,
+                background .2s,
+                color .2s;
+        }
+
+        .exercise-list a:hover{
+            transform:translateY(-5px);
+            background:linear-gradient(135deg,#d98772,#b65c62);
+            color:#fff;
+            box-shadow:0 12px 24px #784b4335;
+        }
+
+        .icon-circle{
+            width:48px;
+            height:48px;
+            min-width:48px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:50%;
+            background:#fff;
+            color:#b65c62;
+            font-size:20px;
+            box-shadow:0 4px 10px #653c3015;
+            transition:transform .2s;
+        }
+
+        .exercise-list a:hover .icon-circle{
+            transform:rotate(-8deg) scale(1.08);
+        }
+
+        .exercise-text{
+            text-align:left;
+        }
+
+        .exercise-text small{
+            display:block;
+            margin-top:4px;
+            color:#9b7c74;
+            font-weight:normal;
+        }
+
+        .exercise-list a:hover small{
+            color:#ffe8e2;
+        }
+
+        .social{
+            text-align:center;
+        }
+
+        .social a{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            margin:6px;
+            padding:11px 18px;
+            border-radius:999px;
+            background:#784b43;
+            color:#fff;
+            text-decoration:none;
+            box-shadow:0 5px 12px #784b4330;
+            transition:transform .2s,background .2s,box-shadow .2s;
+        }
+
+        .social a:hover{
+            background:#b65c62;
+            transform:translateY(-3px);
+            box-shadow:0 8px 18px #784b4335;
+        }
+
+        footer{
+            margin-top:40px;
+            padding-top:22px;
+            border-top:1px dashed #dcbeb1;
+            text-align:center;
+            color:#8b746e;
+            font-size:14px;
+        }
+
+        footer i{
+            color:#b65c62;
+            margin-right:5px;
+        }
+
+        @media(max-width:650px){
+
+            body{
+                padding:24px 14px;
+            }
+
+            .container{
+                padding:22px 16px;
+            }
+
+            .profile{
+                padding:20px 12px 28px;
+            }
+
+            h1{
+                font-size:28px;
+            }
+
+            .exercise-list{
+                grid-template-columns:1fr;
+            }
+
+            .student-info{
+                flex-direction:column;
+                align-items:center;
+            }
+
+            .student-info span{
+                width:100%;
+                max-width:310px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <section class="profile">
+
+        <span class="week-badge">
+            WEEK 3 • WEB/TMĐT
+        </span>
+
+        <div class="avatar-wrap">
+            <img
+                src="img/anhdaidien.jpg"
+                alt="Ảnh đại diện"
+                class="avatar"
+            >
+        </div>
+
+        <h1>Nguyễn Thị Bảo Châu </h1>
+        <div class="student-info">
+
+            <span>
+                <i class="fa-solid fa-graduation-cap"></i>
+                Đại học UEH
+            </span>
+
+            <span>
+                <i class="fa-solid fa-cart-shopping"></i>
+                Thương mại điện tử
+            </span>
+
+            <span>
+                <i class="fa-solid fa-code"></i>
+                Phát triển WEB/TMĐT
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <h2 class="section-title">
+        <i class="fa-solid fa-folder-open"></i>
+        Danh sách bài tập
+    </h2>
+
+
+    <ul class="exercise-list">
+
+        <li>
+            <a href="BaiTap1.html">
+                <span class="icon-circle">
+                    <i class="fa-solid fa-gamepad"></i>
+                </span>
+
+                <span class="exercise-text">
+                    Bài tập 1
+                    <small>CSS Game</small>
+                </span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="BaiTap2.html">
+                <span class="icon-circle">
+                    <i class="fa-solid fa-palette"></i>
+                </span>
+
+                <span class="exercise-text">
+                    Bài tập 2
+                    <small>CSS cơ bản</small>
+                </span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="BaiTap4.html">
+                <span class="icon-circle">
+                    <i class="fa-solid fa-bars"></i>
+                </span>
+
+                <span class="exercise-text">
+                    Bài tập 4
+                    <small>Menu ngang</small>
+                </span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="BaiTap5.html">
+                <span class="icon-circle">
+                    <i class="fa-solid fa-server"></i>
+                </span>
+
+                <span class="exercise-text">
+                    Bài tập 5
+                    <small>Shared Hosting</small>
+                </span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="BaiTap6.html">
+                <span class="icon-circle">
+                    <i class="fa-solid fa-images"></i>
+                </span>
+
+                <span class="exercise-text">
+                    Bài tập 6
+                    <small>My Portfolio</small>
+                </span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="BaiTap7.html">
+                <span class="icon-circle">
+                    <i class="fa-solid fa-table-columns"></i>
+                </span>
+
+                <span class="exercise-text">
+                    Bài tập 7
+                    <small>Layout Website</small>
+                </span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="BaiTap8a.html">
+                <span class="icon-circle">
+                    <i class="fa-solid fa-layer-group"></i>
+                </span>
+
+                <span class="exercise-text">
+                    Bài tập 8A
+                    <small>CSS Layout 1</small>
+                </span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="BaiTap8b.html">
+                <span class="icon-circle">
+                    <i class="fa-solid fa-bolt"></i>
+                </span>
+
+                <span class="exercise-text">
+                    Bài tập 8B
+                    <small>CSS Layout 2</small>
+                </span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="BaiTap9.html">
+                <span class="icon-circle">
+                    <i class="fa-solid fa-icons"></i>
+                </span>
+
+                <span class="exercise-text">
+                    Bài tập 9
+                    <small>Font Awesome</small>
+                </span>
+            </a>
+        </li>
+
+    </ul>
+
+
+    <h2 class="section-title">
+        <i class="fa-solid fa-share-nodes"></i>
+        Social
+    </h2>
+
+
+    <div class="social">
+
+        <a
+            href="https://github.com/nbchau571"
+            target="_blank"
+            rel="noopener"
+        >
+            <i class="fa-brands fa-github"></i>
+            GitHub
+        </a>
+
+        <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener"
+        >
+            <i class="fa-brands fa-facebook"></i>
+            Facebook
+        </a>
+
+    </div>
+
+
+    <footer>
+        <i class="fa-solid fa-code"></i>
+        Bài tập Tuần 3 • Phát triển ứng dụng WEB/TMĐT
+    </footer>
+
+</div>
+
+</body>
+
+</html>
+```

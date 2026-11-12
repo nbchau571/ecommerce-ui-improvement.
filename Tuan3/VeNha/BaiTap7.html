@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bài tập 7 - Layout + Font Awesome</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+
+            font-family: Arial, sans-serif;
+            color: #352b29;
+
+            background:
+                linear-gradient(145deg, #fff8f1, #f3e7df);
+        }
+
+
+        /* =========================
+           NÚT VỀ TRANG CHỦ
+        ========================= */
+
+        .home-link {
+            max-width: 960px;
+            margin: 0 auto 25px;
+        }
+
+        .home-link a {
+            display: inline-block;
+
+            padding: 10px 15px;
+
+            border-radius: 999px;
+
+            background: #784b43;
+            color: #fff;
+
+            text-decoration: none;
+
+            transition:
+                transform .2s,
+                background .2s,
+                box-shadow .2s;
+        }
+
+        .home-link a:hover {
+            background: #b65c62;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 15px #784b4333;
+        }
+
+
+        /* =========================
+           KHUNG CHÍNH
+        ========================= */
+
+        #wrapper {
+            max-width: 960px;
+
+            margin: 0 auto;
+
+            overflow: hidden;
+
+            border: 1px solid #efd9cb;
+
+            border-radius: 24px;
+
+            background: #fff;
+
+            box-shadow:
+                0 16px 40px #653c3020;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            height: 150px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d98772,
+                    #b65c62
+                );
+
+            color: #fff;
+
+            font-size: 34px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            text-shadow:
+                0 3px 8px #653c3055;
+        }
+
+        header i {
+            font-size: 36px;
+        }
+
+
+        /* =========================
+           PHẦN GIỮA
+        ========================= */
+
+        .content {
+            display: flex;
+
+            min-height: 420px;
+        }
+
+
+        /* =========================
+           NAV BÊN TRÁI - 1/3
+        ========================= */
+
+        nav {
+            width: 33.33%;
+
+            padding: 30px 20px;
+
+            background: #fff3ed;
+
+            border-right:
+                1px solid #efd9cb;
+        }
+
+        nav h3 {
+            margin-top: 0;
+
+            margin-bottom: 22px;
+
+            text-align: center;
+
+            color: #784b43;
+
+            font-size: 22px;
+        }
+
+        nav h3 i {
+            margin-right: 7px;
+
+            color: #b65c62;
+        }
+
+        nav ul {
+            list-style: none;
+
+            padding: 0;
+
+            margin: 0;
+        }
+
+        nav li {
+            margin-bottom: 12px;
+        }
+
+        nav a {
+            display: block;
+
+            padding: 13px 15px;
+
+            border-radius: 11px;
+
+            background: #fff;
+
+            color: #784b43;
+
+            font-weight: bold;
+
+            text-decoration: none;
+
+            box-shadow:
+                0 4px 10px #653c3015;
+
+            transition:
+                transform .2s,
+                background .2s,
+                color .2s,
+                box-shadow .2s;
+        }
+
+        nav a i {
+            width: 25px;
+
+            margin-right: 8px;
+
+            color: #b65c62;
+
+            transition:
+                color .2s,
+                transform .2s;
+        }
+
+        nav a:hover {
+            background: #b65c62;
+
+            color: #fff;
+
+            transform: translateX(6px);
+
+            box-shadow:
+                0 8px 16px #784b4330;
+        }
+
+        nav a:hover i {
+            color: #fff;
+
+            transform: scale(1.2);
+        }
+
+
+        /* =========================
+           MAIN BÊN PHẢI - 2/3
+        ========================= */
+
+        main {
+            width: 66.67%;
+
+            padding: 35px;
+
+            background: #fff;
+        }
+
+        main h2 {
+            margin-top: 0;
+
+            color: #784b43;
+
+            font-size: 30px;
+        }
+
+        main h2 i {
+            margin-right: 8px;
+
+            color: #b65c62;
+        }
+
+        main > p {
+            line-height: 1.7;
+
+            color: #74615d;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* =========================
+           CARD TRONG MAIN
+        ========================= */
+
+        .card {
+            margin-top: 18px;
+
+            padding: 20px;
+
+            border: 1px solid #efd9cb;
+
+            border-radius: 14px;
+
+            background: #fff8f1;
+
+            transition:
+                transform .2s,
+                box-shadow .2s,
+                background .2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+
+            background: #fff3ed;
+
+            box-shadow:
+                0 10px 22px #653c3020;
+        }
+
+        .card h3 {
+            margin-top: 0;
+
+            color: #b65c62;
+        }
+
+        .card h3 i {
+            margin-right: 8px;
+
+            font-size: 23px;
+        }
+
+        .card p {
+            margin-bottom: 0;
+
+            line-height: 1.6;
+
+            color: #74615d;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            min-height: 90px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background: #784b43;
+
+            color: #fff;
+
+            text-align: center;
+        }
+
+        footer i {
+            margin-right: 8px;
+
+            color: #ffd9d2;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 650px) {
+
+            body {
+                padding: 24px 14px;
+            }
+
+            header {
+                height: 120px;
+
+                font-size: 26px;
+            }
+
+            .content {
+                flex-direction: column;
+            }
+
+            nav,
+            main {
+                width: 100%;
+            }
+
+            nav {
+                border-right: none;
+
+                border-bottom:
+                    1px solid #efd9cb;
+            }
+
+            main {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <p class="home-link">
+        <a href="index.html">
+            <i class="fa-solid fa-arrow-left"></i>
+            Về trang chủ
+        </a>
+    </p>
+
+
+    <div id="wrapper">
+
+        <!-- HEADER -->
+        <header>
+            <i class="fa-solid fa-laptop-code"></i>
+            HEADER
+        </header>
+
+
+        <!-- PHẦN GIỮA -->
+        <div class="content">
+
+            <!-- NAV -->
+            <nav>
+
+                <h3>
+                    <i class="fa-solid fa-bars"></i>
+                    MENU
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-house"></i>
+                            Trang chủ
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            TMDT
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-database"></i>
+                            ERP
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-chart-line"></i>
+                            MIS
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <!-- MAIN -->
+            <main>
+
+                <h2>
+                    <i class="fa-solid fa-layer-group"></i>
+                    NỘI DUNG CHÍNH
+                </h2>
+
+                <p>
+                    Đây là khu vực nội dung chính của trang web.
+                    Phần nav nằm bên trái chiếm khoảng 1/3 và
+                    phần main nằm bên phải chiếm khoảng 2/3 chiều rộng.
+                </p>
+
+
+                <div class="card">
+
+                    <h3>
+                        <i class="fa-brands fa-html5"></i>
+                        HTML
+                    </h3>
+
+                    <p>
+                        HTML được sử dụng để xây dựng cấu trúc
+                        và nội dung cơ bản của trang web.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        <i class="fa-brands fa-css3-alt"></i>
+                        CSS
+                    </h3>
+
+                    <p>
+                        CSS được sử dụng để định dạng,
+                        bố trí và tạo giao diện đẹp cho trang web.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        <i class="fa-solid fa-globe"></i>
+                        WEB
+                    </h3>
+
+                    <p>
+                        HTML và CSS được kết hợp để tạo nên
+                        một giao diện website hoàn chỉnh.
+                    </p>
+
+                </div>
+
+            </main>
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer>
+            <i class="fa-solid fa-code"></i>
+            © 2026 - Phát triển ứng dụng WEB/TMĐT
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
