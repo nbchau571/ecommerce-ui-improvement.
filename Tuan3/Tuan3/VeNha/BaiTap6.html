@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Bài tập 6 - My Portfolio</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    margin:0;
+    padding:40px 20px;
+
+    font-family:Arial,sans-serif;
+    color:#352b29;
+
+    background:
+        linear-gradient(145deg,#fff8f1,#f3e7df);
+}
+.home-link{
+    max-width:1100px;
+    margin:0 auto 25px;
+}
+
+.home-link a{
+    display:inline-block;
+
+    padding:10px 15px;
+
+    border-radius:999px;
+
+    background:#784b43;
+    color:#fff;
+
+    text-decoration:none;
+
+    transition:
+        transform .2s,
+        background .2s,
+        box-shadow .2s;
+}
+
+.home-link a:hover{
+    background:#b65c62;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 6px 15px #784b4333;
+}
+
+
+/* =========================
+   KHUNG PORTFOLIO
+========================= */
+
+.portfolio{
+    max-width:1100px;
+
+    margin:0 auto;
+
+    padding:45px 30px;
+
+    text-align:center;
+
+    background:#fff;
+
+    border:1px solid #efd9cb;
+
+    border-radius:24px;
+
+    box-shadow:0 16px 40px #653c3020;
+}
+
+
+/* =========================
+   TIÊU ĐỀ
+========================= */
+
+.portfolio h2{
+    margin:0 0 30px;
+
+    font-size:36px;
+
+    letter-spacing:2px;
+
+    color:#784b43;
+
+    position:relative;
+}
+
+.portfolio h2::after{
+    content:"";
+
+    display:block;
+
+    width:70px;
+    height:4px;
+
+    margin:12px auto 0;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d98772,
+            #b65c62
+        );
+}
+
+
+/* =========================
+   DANH SÁCH TAB
+========================= */
+
+.list-tab{
+    list-style:none;
+
+    padding:0;
+
+    margin:0 0 32px;
+}
+
+.list-tab li{
+    display:inline-block;
+
+    margin:6px 5px;
+}
+
+.list-tab a{
+    display:inline-block;
+
+    padding:10px 16px;
+
+    border:1px solid #e5c7bb;
+
+    border-radius:999px;
+
+    color:#784b43;
+
+    background:#fff8f1;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+    transition:
+        transform .2s,
+        background .2s,
+        color .2s,
+        box-shadow .2s;
+}
+
+.list-tab a:hover{
+    transform:translateY(-3px);
+
+    background:#b65c62;
+
+    color:#fff;
+
+    box-shadow:0 6px 15px #784b4333;
+}
+
+
+/* tab đầu tiên nổi bật */
+
+.list-tab li:first-child a{
+    background:
+        linear-gradient(
+            135deg,
+            #d98772,
+            #b65c62
+        );
+
+    color:#fff;
+
+    border-color:transparent;
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.galerry{
+    list-style:none;
+
+    margin:0;
+
+    padding:0;
+
+    text-align:center;
+}
+
+.galerry li{
+    display:inline-block;
+
+    width:31%;
+
+    margin:1%;
+
+    vertical-align:top;
+}
+
+.galerry a{
+    display:block;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:16px;
+
+    background:#f8eee8;
+
+    box-shadow:0 8px 20px #653c3020;
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+}
+
+.galerry a:hover{
+    transform:translateY(-6px);
+
+    box-shadow:0 14px 28px #653c3030;
+}
+
+
+/* =========================
+   ẢNH
+========================= */
+
+.galerry img{
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    border-radius:16px;
+
+    transition:
+        transform .35s,
+        filter .35s;
+}
+
+.galerry a:hover img{
+    transform:scale(1.06);
+
+    filter:brightness(.85);
+}
+
+
+/* =========================
+   LỚP CHỮ KHI HOVER
+========================= */
+
+.galerry a::after{
+    content:"View Project";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-40%);
+
+    opacity:0;
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    background:#ffffffdd;
+
+    color:#784b43;
+
+    font-weight:bold;
+
+    transition:
+        opacity .25s,
+        transform .25s;
+}
+
+.galerry a:hover::after{
+    opacity:1;
+
+    transform:
+        translate(-50%,-50%);
+}
+
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+
+@media(max-width:800px){
+
+    .galerry li{
+        width:47%;
+    }
+
+    .portfolio h2{
+        font-size:31px;
+    }
+}
+
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media(max-width:520px){
+
+    body{
+        padding:24px 14px;
+    }
+
+    .portfolio{
+        padding:32px 16px;
+    }
+
+    .portfolio h2{
+        font-size:27px;
+    }
+
+    .list-tab li{
+        margin:5px 3px;
+    }
+
+    .list-tab a{
+        padding:9px 12px;
+        font-size:14px;
+    }
+
+    .galerry li{
+        width:100%;
+        margin:8px 0;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<p class="home-link">
+    <a href="index.html">
+        ← Về trang chủ
+    </a>
+</p>
+
+
+<section class="portfolio">
+
+    <h2>MY PORTFOLIO</h2>
+
+
+    <ul class="list-tab">
+
+        <li>
+            <a href="./">All</a>
+        </li>
+
+        <li>
+            <a href="./">Web App</a>
+        </li>
+
+        <li>
+            <a href="./">UI/UX</a>
+        </li>
+
+        <li>
+            <a href="./">Graphics Design</a>
+        </li>
+
+        <li>
+            <a href="./">Mobile App</a>
+        </li>
+
+        <li>
+            <a href="./">Branding</a>
+        </li>
+
+        <li>
+            <a href="./">Marketing</a>
+        </li>
+
+    </ul>
+
+
+    <ul class="galerry">
+
+        <li>
+            <a href="./">
+                <img
+                src="https://hocwebchuan.com/exercises/images/img_350x260.png"
+                alt="Portfolio 1">
+            </a>
+        </li>
+
+        <li>
+            <a href="./">
+                <img
+                src="https://hocwebchuan.com/exercises/images/img_350x260.png"
+                alt="Portfolio 2">
+            </a>
+        </li>
+
+        <li>
+            <a href="./">
+                <img
+                src="https://hocwebchuan.com/exercises/images/img_350x260.png"
+                alt="Portfolio 3">
+            </a>
+        </li>
+
+        <li>
+            <a href="./">
+                <img
+                src="https://hocwebchuan.com/exercises/images/img_350x260.png"
+                alt="Portfolio 4">
+            </a>
+        </li>
+
+        <li>
+            <a href="./">
+                <img
+                src="https://hocwebchuan.com/exercises/images/img_350x260.png"
+                alt="Portfolio 5">
+            </a>
+        </li>
+
+        <li>
+            <a href="./">
+                <img
+                src="https://hocwebchuan.com/exercises/images/img_350x260.png"
+                alt="Portfolio 6">
+            </a>
+        </li>
+
+        <li>
+            <a href="./">
+                <img
+                src="https://hocwebchuan.com/exercises/images/img_350x260.png"
+                alt="Portfolio 7">
+            </a>
+        </li>
+
+        <li>
+            <a href="./">
+                <img
+                src="https://hocwebchuan.com/exercises/images/img_350x260.png"
+                alt="Portfolio 8">
+            </a>
+        </li>
+
+        <li>
+            <a href="./">
+                <img
+                src="https://hocwebchuan.com/exercises/images/img_350x260.png"
+                alt="Portfolio 9">
+            </a>
+        </li>
+
+    </ul>
+
+</section>
+
+</body>
+</html>
