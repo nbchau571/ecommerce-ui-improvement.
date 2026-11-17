@@ -50,8 +50,8 @@ main figure {
     width: 1px;
     height: 38px;
     position: absolute;
-    top: 1;
-    left: 1;
+    top: 1px;
+    left: 1px;
 }
 
 #imgManipulated {
