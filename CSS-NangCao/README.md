@@ -38,6 +38,6 @@ Mã bài và tài nguyên của từng Exercise nằm trong thư mục `Lab07`. 
 
 ## Cách mở bài
 
-Mở `CSS-NangCao/index.html` bằng Live Server hoặc mở [trang chủ GitHub Pages]([https://github.com/nbchau571/ecommerce-ui-improvement.](https://github.com/nbchau571/ecommerce-ui-improvement./tree/main/CSS-NangCao). Chọn một Exercise trong mục **Bài thực hành và kỹ năng**. Với bài responsive, thử thu hẹp cửa sổ hoặc dùng chế độ Mobile của DevTools. Với bài hiệu ứng, rê chuột hoặc tải lại trang theo nội dung từng bài.
+Mở `CSS-NangCao/index.html` bằng Live Server hoặc mở [trang chủ GitHub Pages](https://github.com/nbchau571/ecommerce-ui-improvement./tree/main/CSS-NangCao). Chọn một Exercise trong mục **Bài thực hành và kỹ năng**. Với bài responsive, thử thu hẹp cửa sổ hoặc dùng chế độ Mobile của DevTools. Với bài hiệu ứng, rê chuột hoặc tải lại trang theo nội dung từng bài.
 
 [Repository của học phần](https://github.com/nbchau571/ecommerce-ui-improvement.)
