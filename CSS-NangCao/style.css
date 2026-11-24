@@ -1,0 +1,105 @@
+/* Lab 07 · Princess portfolio vibe: hồng phấn, kem, xanh rêu, khung rococo */
+:root{
+  --pink:#f4c6d3; --pink-soft:#fbe3ea; --rose:#d77f9c; --rose-deep:#a94a6d;
+  --cream:#fbf3e6; --paper:#fff9ef; --sage:#8ea66b; --olive:#4f5f33;
+  --plum:#5a3347; --gold:#c9a45c;
+  --script:"Pinyon Script","Great Vibes",cursive;
+  --serif:"Cormorant Garamond","Playfair Display",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:1rem}
+body{
+  margin:0; color:var(--plum); font-family:var(--serif); font-size:1.15rem; line-height:1.65;
+  background-color:var(--pink);
+  background-image:radial-gradient(var(--pink-soft) 26%,transparent 28%),radial-gradient(var(--pink-soft) 26%,transparent 28%);
+  background-size:46px 46px; background-position:0 0,23px 23px;
+}
+a{color:var(--rose-deep)}
+a:focus-visible,.button:focus-visible{outline:3px solid var(--olive);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.skip-link{position:absolute;left:-999px;top:8px;background:var(--cream);padding:8px 14px;border-radius:99px;z-index:9}
+.skip-link:focus{left:12px}
+
+/* thanh điều hướng như dải ruy băng */
+.site-header{padding:18px 12px 0}
+.site-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  max-width:1080px;background:var(--paper);border:2px dashed var(--rose);border-radius:99px;
+  padding:8px 26px;box-shadow:0 0 0 6px var(--paper)}
+.name{font-family:var(--script);font-size:2rem;text-decoration:none;color:var(--rose-deep)}
+.site-nav ul{display:flex;gap:8px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.site-nav li a{display:block;padding:4px 16px;border-radius:99px;text-decoration:none;font-weight:600;color:var(--plum)}
+.site-nav li a:hover{background:var(--pink);}
+
+/* tờ giấy kem có khung đôi viền */
+main.wrap{
+  margin-top:34px;margin-bottom:34px;padding:56px 44px 40px;background:var(--cream);
+  border:3px double var(--rose);border-radius:34px;
+  box-shadow:0 0 0 9px var(--paper),0 0 0 11px var(--rose),0 18px 40px rgba(169,74,109,.25);
+  position:relative;
+}
+main.wrap::before,main.wrap::after{content:"❦";position:absolute;font-size:2.4rem;color:var(--rose);line-height:1}
+main.wrap::before{top:12px;left:20px}
+main.wrap::after{top:12px;right:20px;transform:scaleX(-1)}
+
+h1,h2,h3{font-weight:600;margin:0}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.course{margin:0;font-style:italic;color:var(--olive);font-size:1.2rem}
+h1{font-family:var(--script);font-weight:400;font-size:clamp(3.4rem,8vw,5.6rem);line-height:1.05;color:var(--rose-deep);
+  text-shadow:2px 2px 0 var(--pink)}
+.subtitle{margin:4px 0 18px;font-style:italic;color:var(--olive)}
+.intro p{max-width:56ch}
+.button{display:inline-block;margin-top:14px;padding:10px 26px;border-radius:99px;text-decoration:none;font-weight:700;
+  color:var(--paper);background:var(--rose-deep);border:2px solid var(--paper);box-shadow:0 0 0 2px var(--rose-deep)}
+.button:hover{background:var(--olive);box-shadow:0 0 0 2px var(--olive)}
+
+/* ảnh trong khung vòm như cửa sổ lâu đài, dán washi tape */
+.profile{text-align:center;position:relative}
+.profile img{display:block;width:100%;max-width:340px;aspect-ratio:3/4;object-fit:cover;margin:0 auto;
+  border-radius:999px 999px 18px 18px;border:10px solid var(--paper);
+  box-shadow:0 0 0 3px var(--rose),0 0 0 9px var(--pink),0 14px 26px rgba(90,51,71,.25)}
+.profile::before{content:"🐸";position:absolute;top:-22px;right:6%;font-size:2.4rem;z-index:2;transform:rotate(12deg)}
+.profile::before{content:"🎀";position:absolute;top:-22px;left:10%;font-size:2.4rem;z-index:2;transform:rotate(12deg)}
+.profile-info{margin-top:22px}
+.profile-info h2{font-family:var(--script);font-weight:400;font-size:2.3rem;color:var(--olive)}
+dl{margin:8px 0 10px}
+dl div{display:flex;justify-content:center;gap:10px}
+dt{font-style:italic}dt::after{content:":"}
+dd{margin:0;font-weight:700;overflow-wrap:anywhere}
+
+h2{font-family:var(--script);font-weight:400;font-size:clamp(2.4rem,5vw,3.4rem);color:var(--rose-deep);text-align:center}
+.exercises{margin-top:64px}
+.exercises>h2::before,.reflection>h2::before{content:"🎀 ";font-size:.6em}
+.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:30px;margin-top:26px}
+
+/* thẻ viền răng cưa giống sticker trong ảnh inspo */
+.topic{background:var(--paper);padding:26px 24px;border-radius:30px;border:3px solid var(--sage);
+  outline:2px dashed var(--rose);outline-offset:-12px;box-shadow:0 8px 0 var(--pink)}
+.topic h3{font-family:var(--script);font-weight:400;font-size:2rem;color:var(--olive);line-height:1.2}
+.topic p{margin:6px 0 14px;font-size:1.05rem}
+.topic ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.topic li a{display:flex;align-items:center;gap:10px;padding:5px 10px;border-radius:99px;text-decoration:none;color:var(--plum);font-weight:600}
+.topic li a:hover{background:var(--pink-soft);color:var(--rose-deep)}
+.topic li span{flex:none;font-variant-numeric:tabular-nums;min-width:2.9rem;text-align:center;padding:0 8px;border-radius:99px;background:var(--rose);color:var(--paper);font-size:.95rem}
+.note{text-align:center;font-style:italic;margin:30px auto 0;max-width:62ch;color:var(--olive)}
+
+.reflection{margin-top:60px;padding:34px 36px;background:var(--pink-soft);border-radius:200px 200px 28px 28px / 90px 90px 28px 28px;
+  border:3px solid var(--rose);box-shadow:inset 0 0 0 7px var(--paper)}
+.reflection h2{padding-top:10px}
+.reflection p{max-width:70ch;margin:14px auto 0}
+
+.site-footer{padding:6px 0 38px;text-align:center}
+.site-footer a{display:inline-block;background:var(--paper);padding:6px 22px;border-radius:99px;border:2px dashed var(--sage);
+  color:var(--olive);text-decoration:none;font-weight:700}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;gap:34px}
+  main.wrap{padding:52px 20px 30px}
+  .site-nav{border-radius:30px;justify-content:center}
+  .reflection{border-radius:90px 90px 24px 24px / 50px 50px 24px 24px;padding:26px 20px}
+}
+@media (max-width:620px){
+  .wrap{padding:0 14px}
+  .profile img{max-width:280px}
+  .profile dl div{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
