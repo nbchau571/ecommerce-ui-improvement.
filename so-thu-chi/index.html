@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sổ thu chi</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap">
+<style>
+:root{--bg1:#f8dde0;--bg2:#ecc0cb;--ink:#3b1f36;--mute:#8a6a85;--card:rgba(255,255,255,.8);--solid:#fff;--line:rgba(150,90,130,.16);--h1:#cf82b8;--h2:#a4528b;--acc:#f08a4b;--accfg:#fff;--thu:#1c8560;--chi:#c0392f;--chip:#f7e8ee;--on:#a4528b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg1:#2c1728;--bg2:#1b0e19;--ink:#f6e6f0;--mute:#b998b0;--card:rgba(255,255,255,.07);--solid:#33202f;--line:rgba(255,255,255,.1);--h1:#a8568f;--h2:#7a386a;--chip:#3b2536;--thu:#6fd3a8;--chi:#ff8f85;--on:#f2a6d6}}
+:root[data-theme="dark"]{color-scheme:dark;--bg1:#2c1728;--bg2:#1b0e19;--ink:#f6e6f0;--mute:#b998b0;--card:rgba(255,255,255,.07);--solid:#33202f;--line:rgba(255,255,255,.1);--h1:#a8568f;--h2:#7a386a;--chip:#3b2536;--thu:#6fd3a8;--chi:#ff8f85;--on:#f2a6d6}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background-color:var(--bg2);background-image:linear-gradient(165deg,var(--bg1),var(--bg2));background-attachment:fixed;color:var(--ink);font:500 15px/1.45 Nunito,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--on);outline-offset:2px}
+.app{max-width:520px;margin:0 auto;padding:18px 16px 130px}
+.top small{color:var(--mute);display:block}
+.top h1{margin:0 0 16px;font-size:24px;font-weight:800}
+.hero{position:relative;overflow:hidden;border-radius:28px;padding:20px;color:#fff;background:linear-gradient(135deg,var(--h1),var(--h2));box-shadow:0 14px 30px rgba(164,82,139,.28)}
+.hero small{opacity:.85}
+.hero b.big{display:block;font-size:34px;font-weight:800;margin:2px 0 14px;letter-spacing:-.01em}
+.hero .art{position:absolute;right:14px;top:6px;font-size:84px;transform:rotate(12deg);filter:drop-shadow(0 8px 10px rgba(0,0,0,.2))}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{background:rgba(255,255,255,.2);border-radius:99px;padding:6px 12px;font-size:13px;font-weight:700}
+.sec{display:flex;justify-content:space-between;align-items:center;margin:24px 2px 10px}
+.sec h2{margin:0;font-size:17px;font-weight:800}
+.link{border:0;background:none;color:var(--on);font-weight:700}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:0 6px 18px rgba(164,82,139,.1)}
+.tile .em{width:46px;height:46px;border-radius:16px;background:var(--chip);display:grid;place-items:center;font-size:26px;margin-bottom:10px}
+.tile b{display:block}.tile small{color:var(--mute)}
+.tx{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:12px;margin-bottom:10px;cursor:pointer}
+.tx .ic{width:44px;height:44px;border-radius:15px;background:var(--chip);display:grid;place-items:center;font-size:24px;flex:none}
+.tx .mid{flex:1;min-width:0}.tx .mid b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tx small{color:var(--mute)}
+.tx .rt{text-align:right;flex:none}.tx .rt>b{display:block}
+.t{color:var(--thu)}.c{color:var(--chi)}
+.badge{border:0;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:700;background:var(--chip);color:var(--mute);margin-top:3px}
+.badge.done{background:var(--thu);color:var(--solid)}
+.empty{text-align:center;color:var(--mute);padding:26px 12px;background:var(--card);border:1px dashed var(--line);border-radius:20px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:7px 14px;font-weight:700;font-size:14px}
+.chip.on{background:var(--h2);border-color:var(--h2);color:#fff}
+.inp{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin-bottom:10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;margin-bottom:12px}
+.card h3{margin:0 0 10px;font-size:15px}
+.bar{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;margin:10px 0;font-size:13px}
+.bar .tr{height:12px;border-radius:8px;background:var(--chip);overflow:hidden}.bar i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,var(--h1),var(--h2))}
+.bar .nm{display:flex;justify-content:space-between;margin-bottom:3px;font-weight:700}
+.cols{display:flex;gap:10px;align-items:flex-end;height:140px}
+.col{flex:1;text-align:center;font-size:12px;color:var(--mute)}
+.col .bs{height:112px;display:flex;gap:3px;align-items:flex-end;justify-content:center}
+.col .bs i{width:42%;border-radius:6px 6px 2px 2px;min-height:3px}
+.btn{width:100%;border:0;border-radius:18px;padding:14px;font-weight:800;background:var(--acc);color:var(--accfg);box-shadow:0 8px 18px rgba(240,138,75,.35)}
+.btn.g{background:var(--chip);color:var(--ink);box-shadow:none;margin-top:8px}
+.btn.d{background:transparent;color:var(--chi);box-shadow:none;border:1px solid var(--chi);margin-top:8px}
+nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:520px;display:grid;grid-template-columns:1fr 1fr 84px 1fr 1fr;align-items:center;background:var(--solid);border-radius:28px 28px 0 0;padding:8px 6px calc(8px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 24px rgba(164,82,139,.18);z-index:5}
+nav .tab{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11px;font-weight:700;color:var(--mute);padding:4px 0}
+nav .tab span{font-size:21px;filter:grayscale(1);opacity:.7}
+nav .tab.on{color:var(--on)}nav .tab.on span{filter:none;opacity:1}
+.fab{width:62px;height:62px;border-radius:50%;border:0;margin:-34px auto 0;background:var(--acc);color:#fff;font-size:32px;line-height:1;box-shadow:0 10px 22px rgba(240,138,75,.5),0 0 0 6px var(--solid)}
+.ov{position:fixed;inset:0;background:rgba(40,15,35,.5);display:none;z-index:10;align-items:flex-end;justify-content:center}
+.ov.show{display:flex}
+.sheet{width:100%;max-width:520px;max-height:92%;overflow-y:auto;background:var(--solid);border-radius:28px 28px 0 0;padding:18px 18px calc(22px + env(safe-area-inset-bottom,0px))}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sh h2{margin:0;font-size:18px;font-weight:800}
+.x{border:0;background:var(--chip);width:34px;height:34px;border-radius:50%;font-size:16px}
+.amt{font-size:30px;font-weight:800;text-align:center}
+.err{color:var(--chi);font-size:13px;min-height:18px;margin:2px 0 8px}
+.lbl{font-size:13px;color:var(--mute);margin:4px 2px 6px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--chip);border-radius:16px;padding:4px;margin-bottom:12px;gap:4px}
+.seg button{border:0;background:none;border-radius:12px;padding:9px;font-weight:800;color:var(--mute)}
+.seg button.on{background:var(--solid);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+</style>
+</head>
+<body>
+<main class="app" id="main"></main>
+<nav aria-label="Điều hướng">
+<button class="tab" data-tab="home"><span>🏠</span>Tổng quan</button>
+<button class="tab" data-tab="list"><span>🧾</span>Giao dịch</button>
+<button class="fab" id="fab" aria-label="Thêm giao dịch">+</button>
+<button class="tab" data-tab="stats"><span>📊</span>Thống kê</button>
+<button class="tab" data-tab="data"><span>⚙️</span>Dữ liệu</button>
+</nav>
+
+<div class="ov" id="ov">
+<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sht">
+<div class="sh"><h2 id="sht">Thêm giao dịch</h2><button class="x" id="xb" aria-label="Đóng">✕</button></div>
+<div class="seg" id="segT"><button data-t="chi">Chi tiêu</button><button data-t="thu">Thu nhập</button></div>
+<input class="inp amt" id="amount" type="number" inputmode="numeric" min="1" step="1000" placeholder="0 đ" aria-label="Số tiền">
+<div class="lbl">Danh mục</div><div class="chips" id="cats"></div>
+<div class="lbl">Nội dung</div><input class="inp" id="title" maxlength="80" placeholder="Ví dụ: cơm trưa, mua sách…">
+<div class="lbl">Ngày</div><input class="inp" id="date" type="date">
+<div class="lbl">Trạng thái</div>
+<div class="seg" id="segS"><button data-s="done">Đã xong</button><button data-s="pending">Chờ xử lý</button></div>
+<div class="err" id="err" role="alert"></div>
+<button class="btn" id="save">Lưu giao dịch</button>
+<button class="btn d" id="del" hidden>Xoá giao dịch</button>
+</div>
+</div>
+
+<div class="ov" id="auth" style="align-items:center"><div class="sheet" style="border-radius:28px;margin:16px">
+<div class="sh"><h2>Đăng nhập Sổ thu chi</h2></div>
+<div class="lbl">Dữ liệu của bạn được lưu riêng trên Supabase.</div>
+<input class="inp" id="em" type="email" autocomplete="email" placeholder="Email">
+<input class="inp" id="pw" type="password" autocomplete="current-password" placeholder="Mật khẩu (từ 6 ký tự)">
+<div class="err" id="aerr" role="alert"></div>
+<button class="btn" id="lg">Đăng nhập</button><button class="btn g" id="su">Tạo tài khoản mới</button>
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script>
+var KEY='sothuchi_v1';
+var CATS={chi:[['Ăn uống','🍜'],['Di chuyển','🛵'],['Học tập','📚'],['Mua sắm','🛍️'],['Giải trí','🎮'],['Hoá đơn','🧾'],['Khác','🎀']],
+thu:[['Tiền gia đình','🏠'],['Làm thêm','💼'],['Học bổng','🎓'],['Bán hàng','🛒'],['Khác','🎁']]};
+var tx=[],S={tab:'home',edit:null,type:'chi',status:'done',cat:'',confirm:false,sType:'chi'};
+var F={type:'',status:'',q:'',month:''};
+var $=function(i){return document.getElementById(i)};
+function today(){var d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+function money(n){return Number(n).toLocaleString('vi-VN')+' đ'}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function emo(t,c){var f=CATS[t].filter(function(x){return x[0]===c})[0];return f?f[1]:'🎀'}
+function sample(){var m=today().slice(0,8);return[
+{id:uid(),date:m+'01',title:'Tiền gia đình gửi',type:'thu',cat:'Tiền gia đình',amount:3000000,status:'done'},
+{id:uid(),date:m+'03',title:'Mua giáo trình',type:'chi',cat:'Học tập',amount:250000,status:'done'},
+{id:uid(),date:m+'05',title:'Cơm và cà phê',type:'chi',cat:'Ăn uống',amount:120000,status:'done'},
+{id:uid(),date:m+'06',title:'Grab đi học',type:'chi',cat:'Di chuyển',amount:60000,status:'done'},
+{id:uid(),date:m+'07',title:'Làm thêm cuối tuần',type:'thu',cat:'Làm thêm',amount:600000,status:'pending'}]}
+var SB=null,MODE='local',UID=null,CAT={};
+function fail(e){console.error(e)}
+function cfg(){return window.APP_CONFIG&&APP_CONFIG.SUPABASE_URL&&APP_CONFIG.SUPABASE_ANON_KEY&&window.supabase}
+function loadLocal(){try{var r=localStorage.getItem(KEY);if(r)tx=JSON.parse(r);else tx=sample()}catch(e){tx=[]}if(!Array.isArray(tx))tx=[]}
+function saveLocal(){try{localStorage.setItem(KEY,JSON.stringify(tx))}catch(e){}}
+async function loadCloud(){
+ var s=await SB.auth.getSession();UID=s.data.session.user.id;
+ var c=await SB.from('categories').select('id,name,type,emoji').order('sort_order');if(c.error)throw c.error;
+ CATS={chi:[],thu:[]};CAT={};
+ c.data.forEach(function(k){CATS[k.type].push([k.name,k.emoji]);CAT[k.type+'|'+k.name]=k.id});
+ var t=await SB.from('transactions').select('id,occurred_on,title,type,amount,status,categories(name)').order('occurred_on',{ascending:false});if(t.error)throw t.error;
+ tx=t.data.map(function(r){return{id:r.id,date:r.occurred_on,title:r.title,type:r.type,cat:r.categories?r.categories.name:'Khác',amount:Number(r.amount),status:r.status}})}
+function payload(r){return{user_id:UID,occurred_on:r.date,title:r.title,type:r.type,category_id:CAT[r.type+'|'+r.cat],amount:r.amount,status:r.status}}
+async function upsert(r,isEdit){
+ if(MODE==='local'){if(isEdit)tx=tx.map(function(x){return x.id===r.id?r:x});else tx.push(r);saveLocal();return}
+ var q=isEdit?SB.from('transactions').update(payload(r)).eq('id',r.id):SB.from('transactions').insert(payload(r));
+ var res=await q;if(res.error)throw res.error;await loadCloud()}
+async function setStatus(x){var n=x.status==='done'?'pending':'done';
+ if(MODE==='local'){x.status=n;saveLocal();return}
+ var res=await SB.from('transactions').update({status:n}).eq('id',x.id);if(res.error)throw res.error;x.status=n}
+async function removeTx(id){
+ if(MODE==='local'){tx=tx.filter(function(x){return x.id!==id});saveLocal();return}
+ var res=await SB.from('transactions').delete().eq('id',id);if(res.error)throw res.error;tx=tx.filter(function(x){return x.id!==id})}
+async function loadSample(){
+ if(MODE==='local'){tx=tx.concat(sample());saveLocal();return}
+ var res=await SB.from('transactions').insert(sample().map(payload));if(res.error)throw res.error;await loadCloud()}
+async function clearAll(){
+ if(MODE==='local'){tx=[];saveLocal();return}
+ var res=await SB.from('transactions').delete().eq('user_id',UID);if(res.error)throw res.error;tx=[]}
+function showAuth(){$('auth').classList.add('show')}
+async function authGo(signup){
+ var em=$('em').value.trim(),pw=$('pw').value,er=$('aerr');er.textContent='';
+ if(!em||pw.length<6){er.textContent='Nhập email và mật khẩu từ 6 ký tự.';return}
+ var r=signup?await SB.auth.signUp({email:em,password:pw}):await SB.auth.signInWithPassword({email:em,password:pw});
+ if(r.error){er.textContent=r.error.message;return}
+ if(!r.data.session){er.textContent='Đã đăng ký. Hãy xác nhận email rồi đăng nhập.';return}
+ $('auth').classList.remove('show');await loadCloud();render()}
+async function init(){
+ if(cfg()){MODE='cloud';SB=supabase.createClient(APP_CONFIG.SUPABASE_URL,APP_CONFIG.SUPABASE_ANON_KEY);
+  var s=await SB.auth.getSession();
+  if(!s.data.session){showAuth();render();return}
+  try{await loadCloud()}catch(e){fail(e)}
+ }else loadLocal();
+ render()}
+function done(){return tx.filter(function(x){return x.status==='done'})}
+function totals(){var t=0,c=0;done().forEach(function(x){if(x.type==='thu')t+=x.amount;else c+=x.amount});return{t:t,c:c}}
+function row(x){var d=x.date.split('-').reverse().slice(0,2).join('/');
+return '<div class="tx" tabindex="0" data-a="edit" data-id="'+x.id+'"><div class="ic">'+emo(x.type,x.cat)+'</div><div class="mid"><b>'+esc(x.title)+'</b><small>'+esc(x.cat)+' · '+d+'</small></div><div class="rt"><b class="'+(x.type==='thu'?'t':'c')+'">'+(x.type==='thu'?'+':'−')+money(x.amount)+'</b><button class="badge '+(x.status==='done'?'done':'')+'" data-a="st" data-id="'+x.id+'" aria-label="Đổi trạng thái">'+(x.status==='done'?'Đã xong':'Chờ xử lý')+'</button></div></div>'}
+function sorted(a){return a.slice().sort(function(p,q){return p.date<q.date?1:p.date>q.date?-1:0})}
+
+function home(){var T=totals(),h=new Date().getHours();
+var g=h<11?'Chào buổi sáng':h<14?'Chào buổi trưa':h<18?'Chào buổi chiều':'Chào buổi tối';
+var ds=new Date().toLocaleDateString('vi-VN',{weekday:'long',day:'numeric',month:'numeric',year:'numeric'});
+var by={};done().forEach(function(x){if(x.type==='chi')by[x.cat]=(by[x.cat]||{s:0,n:0}),by[x.cat].s+=x.amount,by[x.cat].n++});
+var ks=Object.keys(by).sort(function(a,b){return by[b].s-by[a].s}).slice(0,4);
+var rec=sorted(tx).slice(0,5);
+return '<div class="top"><small>'+ds+'</small><h1>'+g+' 👋</h1></div>'+
+'<div class="hero"><div class="art">💰</div><small>Số dư hiện tại</small><b class="big">'+money(T.t-T.c)+'</b><div class="pills"><span class="pill">↓ Thu '+money(T.t)+'</span><span class="pill">↑ Chi '+money(T.c)+'</span></div></div>'+
+'<div class="sec"><h2>Chi nhiều nhất</h2></div>'+
+(ks.length?'<div class="tiles">'+ks.map(function(k){return '<div class="tile"><div class="em">'+emo('chi',k)+'</div><b>'+esc(k)+'</b><small>'+money(by[k].s)+' · '+by[k].n+' lần</small></div>'}).join('')+'</div>':'<div class="empty">Chưa có khoản chi nào đã xong.</div>')+
+'<div class="sec"><h2>Gần đây</h2><button class="link" data-tab="list">Xem tất cả</button></div>'+
+(rec.length?rec.map(row).join(''):'<div class="empty">Bấm nút + màu cam để thêm giao dịch đầu tiên.</div>')}
+
+function filt(){var q=F.q.trim().toLowerCase();return sorted(tx.filter(function(x){return(!q||x.title.toLowerCase().indexOf(q)>=0)&&(!F.type||x.type===F.type)&&(!F.status||x.status===F.status)&&(!F.month||x.date.slice(0,7)===F.month)}))}
+function chip(k,v,l){return '<button class="chip '+(F[k]===v?'on':'')+'" data-f="'+k+'" data-v="'+v+'">'+l+'</button>'}
+function listTab(){return '<div class="top"><h1>Giao dịch</h1></div>'+
+'<div class="chips">'+chip('type','','Tất cả')+chip('type','thu','Thu')+chip('type','chi','Chi')+'</div>'+
+'<div class="chips">'+chip('status','','Mọi trạng thái')+chip('status','done','Đã xong')+chip('status','pending','Chờ xử lý')+'</div>'+
+'<div class="two"><input class="inp" id="q" placeholder="Tìm nội dung" value="'+esc(F.q)+'" aria-label="Tìm nội dung"><input class="inp" id="mo" type="month" value="'+F.month+'" aria-label="Lọc theo tháng"></div>'+
+'<div id="txl"></div>'}
+function fillList(){var r=filt();$('txl').innerHTML=r.length?r.map(row).join('')+'<div class="lbl" style="text-align:center">Bấm vào giao dịch để sửa hoặc xoá. Bấm nhãn trạng thái để đổi nhanh.</div>':'<div class="empty">Không có giao dịch nào khớp bộ lọc.</div>'}
+
+function stats(){var d=done(),sum={},tot=0;
+d.forEach(function(x){if(x.type===S.sType){sum[x.cat]=(sum[x.cat]||0)+x.amount;tot+=x.amount}});
+var ks=Object.keys(sum).sort(function(a,b){return sum[b]-sum[a]}),mx=ks.length?sum[ks[0]]:1;
+var ms=[],n=new Date();for(var i=5;i>=0;i--){var m=new Date(n.getFullYear(),n.getMonth()-i,1);ms.push(m.getFullYear()+'-'+String(m.getMonth()+1).padStart(2,'0'))}
+var mt={},mc={},mm=1;ms.forEach(function(m){mt[m]=0;mc[m]=0});
+d.forEach(function(x){var m=x.date.slice(0,7);if(m in mt){if(x.type==='thu')mt[m]+=x.amount;else mc[m]+=x.amount}});
+ms.forEach(function(m){mm=Math.max(mm,mt[m],mc[m])});
+var np=tx.length-d.length;
+return '<div class="top"><h1>Thống kê</h1></div>'+
+'<div class="tiles" style="margin-bottom:12px"><div class="tile"><div class="em">✅</div><b>'+d.length+' đã xong</b><small>Tính vào thống kê</small></div><div class="tile"><div class="em">⏳</div><b>'+np+' chờ xử lý</b><small>Chưa tính vào số dư</small></div></div>'+
+'<div class="card"><h3>Theo danh mục</h3><div class="seg"><button data-st="chi" class="'+(S.sType==='chi'?'on':'')+'">Chi tiêu</button><button data-st="thu" class="'+(S.sType==='thu'?'on':'')+'">Thu nhập</button></div>'+
+(ks.length?ks.map(function(k){return '<div class="bar"><span style="font-size:22px">'+emo(S.sType,k)+'</span><div><div class="nm"><span>'+esc(k)+'</span><span>'+Math.round(sum[k]/tot*100)+'%</span></div><div class="tr"><i style="width:'+Math.max(3,sum[k]/mx*100)+'%"></i></div></div><span>'+money(sum[k])+'</span></div>'}).join(''):'<div class="empty">Chưa có dữ liệu đã xong.</div>')+'</div>'+
+'<div class="card"><h3>6 tháng gần nhất</h3><div class="cols">'+ms.map(function(m){return '<div class="col"><div class="bs"><i style="background:var(--thu);height:'+Math.max(2,mt[m]/mm*100)+'%" title="Thu '+money(mt[m])+'"></i><i style="background:var(--chi);height:'+Math.max(2,mc[m]/mm*100)+'%" title="Chi '+money(mc[m])+'"></i></div>'+m.slice(5)+'/'+m.slice(2,4)+'</div>'}).join('')+'</div><div class="lbl" style="margin-top:10px"><span class="t">■</span> Thu &nbsp; <span class="c">■</span> Chi</div></div>'}
+
+function dataTab(){return '<div class="top"><h1>Dữ liệu</h1></div><div class="card"><h3>Đang lưu '+tx.length+' giao dịch</h3><div class="lbl">'+(MODE==='cloud'?'Đang đồng bộ với Supabase.':'Chế độ ngoại tuyến: dữ liệu lưu trong trình duyệt. Điền config.js để kết nối Supabase.')+'</div>'+(MODE==='cloud'?'<button class="btn g" id="out">Đăng xuất</button>':'')+'<button class="btn g" id="smp">Thêm dữ liệu mẫu</button><button class="btn d" id="clr">Xoá toàn bộ giao dịch</button></div>'}
+
+function render(){var m=$('main');
+m.innerHTML=S.tab==='home'?home():S.tab==='list'?listTab():S.tab==='stats'?stats():dataTab();
+if(S.tab==='list')fillList();
+document.querySelectorAll('nav .tab').forEach(function(b){b.classList.toggle('on',b.dataset.tab===S.tab)})}
+
+function drawCats(){$('cats').innerHTML=CATS[S.type].map(function(c){return '<button class="chip '+(S.cat===c[0]?'on':'')+'" data-c="'+c[0]+'">'+c[1]+' '+c[0]+'</button>'}).join('')}
+function drawSeg(){document.querySelectorAll('#segT button').forEach(function(b){b.classList.toggle('on',b.dataset.t===S.type)});document.querySelectorAll('#segS button').forEach(function(b){b.classList.toggle('on',b.dataset.s===S.status)})}
+function openSheet(id){var x=id?tx.filter(function(t){return t.id===id})[0]:null;S.edit=x?x.id:null;S.confirm=false;
+S.type=x?x.type:'chi';S.status=x?x.status:'done';S.cat=x?x.cat:CATS[S.type][0][0];
+$('amount').value=x?x.amount:'';$('title').value=x?x.title:'';$('date').value=x?x.date:today();
+$('sht').textContent=x?'Sửa giao dịch':'Thêm giao dịch';$('save').textContent=x?'Lưu thay đổi':'Lưu giao dịch';
+$('del').hidden=!x;$('del').textContent='Xoá giao dịch';$('err').textContent='';drawSeg();drawCats();$('ov').classList.add('show');setTimeout(function(){$(x?'title':'amount').focus()},50)}
+function closeSheet(){$('ov').classList.remove('show')}
+function submit(){var a=Math.round(Number($('amount').value)),t=$('title').value.trim(),d=$('date').value;
+if(!(a>0))return $('err').textContent='Hãy nhập số tiền lớn hơn 0.';
+if(!t)return $('err').textContent='Hãy nhập nội dung giao dịch.';
+if(!d)return $('err').textContent='Hãy chọn ngày.';
+var r={id:S.edit||uid(),date:d,title:t,type:S.type,cat:S.cat,amount:a,status:S.status};
+$('save').disabled=true;
+upsert(r,!!S.edit).then(function(){closeSheet();render()}).catch(function(e){$('err').textContent='Không lưu được: '+(e.message||e)}).then(function(){$('save').disabled=false})}
+
+$('main').addEventListener('click',function(e){
+var t=e.target.closest('[data-tab]');if(t){S.tab=t.dataset.tab;render();return}
+var f=e.target.closest('[data-f]');if(f){F[f.dataset.f]=f.dataset.v;render();return}
+var s=e.target.closest('[data-st]');if(s){S.sType=s.dataset.st;render();return}
+var b=e.target.closest('[data-a]');if(b){var id=b.dataset.id;
+if(b.dataset.a==='st'){e.stopPropagation();var x=tx.filter(function(t){return t.id===id})[0];if(x)setStatus(x).then(render).catch(fail)}else openSheet(id);return}
+if(e.target.id==='out'){SB.auth.signOut().then(function(){tx=[];render();showAuth()})}
+if(e.target.id==='smp'){loadSample().then(render).catch(fail)}
+if(e.target.id==='clr'){if(!S.confirm){S.confirm=true;e.target.textContent='Bấm lần nữa để xoá hết'}else{S.confirm=false;clearAll().then(render).catch(fail)}}});
+$('main').addEventListener('input',function(e){if(e.target.id==='q'){F.q=e.target.value;fillList()}if(e.target.id==='mo'){F.month=e.target.value;fillList()}});
+$('main').addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.classList.contains('tx'))openSheet(e.target.dataset.id)});
+document.querySelector('nav').addEventListener('click',function(e){var t=e.target.closest('[data-tab]');if(t){S.tab=t.dataset.tab;S.confirm=false;render();window.scrollTo(0,0)}});
+$('fab').addEventListener('click',function(){openSheet(null)});
+$('xb').addEventListener('click',closeSheet);
+$('ov').addEventListener('click',function(e){if(e.target.id==='ov')closeSheet()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSheet()});
+$('segT').addEventListener('click',function(e){var b=e.target.closest('[data-t]');if(!b)return;S.type=b.dataset.t;S.cat=CATS[S.type][0][0];drawSeg();drawCats()});
+$('segS').addEventListener('click',function(e){var b=e.target.closest('[data-s]');if(!b)return;S.status=b.dataset.s;drawSeg()});
+$('cats').addEventListener('click',function(e){var b=e.target.closest('[data-c]');if(!b)return;S.cat=b.dataset.c;drawCats()});
+$('save').addEventListener('click',submit);
+$('del').addEventListener('click',function(){if(!S.confirm){S.confirm=true;$('del').textContent='Bấm lần nữa để xác nhận xoá';return}
+removeTx(S.edit).then(function(){closeSheet();render()}).catch(fail)});
+$('lg').addEventListener('click',function(){authGo(false)});
+$('su').addEventListener('click',function(){authGo(true)});
+init();
+</script>
+</body>
+</html>

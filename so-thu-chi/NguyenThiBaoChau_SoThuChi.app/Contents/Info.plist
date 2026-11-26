@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>com.anthropic.claudefordesktop.artifact-app.5a509916887b8424b0256a0908a12f2d</string>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<true/>
+	<key>CFBundleName</key>
+	<string>Sổ thu chi</string>
+	<key>CFBundleDisplayName</key>
+	<string>Sổ thu chi</string>
+	<key>CFBundleExecutable</key>
+	<string>artifact-app</string>
+	<key>CFBundleIconFile</key>
+	<string>app</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>3</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>13.0</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>ClaudeArtifactAppId</key>
+	<string>5a509916887b8424b0256a0908a12f2d</string>
+	<key>ElectronAppShimHostPath</key>
+	<string>/Applications/Claude.app</string>
+	<key>ElectronAppShimHostBundleIdentifier</key>
+	<string>com.anthropic.claudefordesktop</string>
+	<key>ElectronAppShimServerName</key>
+	<string>claude-artifact-apps</string>
+	<key>ElectronAppShimHostArguments</key>
+	<array><string>--artifact-app-launch</string></array>
+</dict>
+</plist>
